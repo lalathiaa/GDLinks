@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTM Personal Google Drive Links</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Include your CSS file -->
+    <style>
+        /* Basic styling for layout */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+        }
+        .sidebar {
+            width: 20%;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border-right: 1px solid #ddd;
+        }
+        .content {
+            width: 80%;
+            padding: 20px;
+        }
+        .participants {
+            margin-bottom: 20px;
+        }
+        .participant {
+            background-color: #ececec;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .header, .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .header th, .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .header th {
+            background-color: #f4f4f4;
+        }
+        .table th {
+            background-color: #f1f1f1;
+        }
+        .delete-btn {
+            color: red;
+            cursor: pointer;
+        }
+        .pagination {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .add-button {
+            background-color: #8B0000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #8B0000; /* Dark red color */
+            padding: 10px 20px;
+        }
+
+        nav .logo {
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        nav ul li a.active {
+            background-color: #fff;
+            color: #8B0000;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            background-color: #ffffff22; /* Light overlay */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">UTM</div>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">Sent Links</a></li>
+                <li><a href="#">Feedback</a></li>
+                <li><a href="#">UTM Staff</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>View Participants</h3>
+            <div class="participants">
+                <div class="participant">Ryan Will</div>
+                <div class="participant">Fatin Najihah</div>
+                <div class="participant">Thia Thaqif</div>
+                <div class="participant">Azry AAA</div>
+                <div class="participant">Irdina Fatini</div>
+                <div class="participant">Naim Fikri</div>
+            </div>
+            <button class="add-button">Add Participants</button>
+        </aside>
+
+        <!-- Main Content -->
+        <section class="content">
+            <h2>Personal Google Drive Links</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Category</th>
+                        <th>Date / Time</th>
+                        <th>Ref. Name</th>
+                        <th>Ref. Name Details</th>
+                        <th>Google Drive Links</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Course Coordination</td>
+                        <td>04/03/2023 6:20 pm</td>
+                        <td>DSA</td>
+                        <td>Data Structure and Algorithm course materials</td>
+                        <td><a href="https://drive.google.com/">https://drive.google.com/...</a></td>
+                        <td class="delete-btn">🗑️</td>
+                    </tr>
+                    <!-- Repeat for more rows -->
+                </tbody>
+            </table>
+            <div class="pagination">
+                <div>
+                    <button>Previous</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>Next</button>
+                </div>
+                <button class="add-button">Add</button>
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
