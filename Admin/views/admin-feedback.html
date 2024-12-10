@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Feedback Page</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f0ecec;
+      }
+      .navbar {
+        background-color: #fff;
+        border-bottom: 2px solid #900c3f;
+      }
+      .navbar-brand img {
+        height: 40px;
+      }
+      .navbar-nav .nav-link {
+        color: #000;
+        font-weight: bold;
+        margin-right: 15px;
+      }
+
+      .navbar-nav .nav-link.active {
+        color: #900c3f;
+        border-bottom: 3px solid #900c3f;
+      }
+
+      .main-background {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .review-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px;
+        background-color: #fff;
+        margin-bottom: 15px;
+      }
+
+      .star {
+        color: #ffc107;
+      }
+
+      .verified-badge {
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background-color: green;
+        border-radius: 50%;
+        color: white;
+        text-align: center;
+        line-height: 18px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .header {
+        background-color: white;
+        border-bottom: 1px solid #ddd;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            alt="UTM Logo"
+            height="40"
+            src="C:\Users\budak\OneDrive\Desktop\AD PROJECT\GDLinks\images\UTM-LOGO-FULL.png"
+            style="width: auto"
+          />
+        </a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="admin-dashboard.html">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="admin-feedback.html">FEEDBACK</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="loginPage.html">LOGOUT</a>
+              </li>
+            </ul>
+          </div>
+      </div>
+    </nav>
+
+    <!-- Reviews Section -->
+    <div class="container mt-4">
+      <div class="main-background">
+        <h2 id="totalReviews">All Reviews</h2>
+        <div class="d-flex justify-content-between mb-3">
+          <div></div>
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="sortDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Sort by
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+              <li>
+                <a class="dropdown-item" onclick="sortReviews('latest')"
+                  >Latest</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" onclick="sortReviews('oldest')"
+                  >Oldest</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Reviews -->
+        <div class="row" id="reviewsContainer">
+          <!-- Reviews will be dynamically loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Simulated data source (feedback data retrieved from backend or API)
+      const feedbackData = [
+        {
+          name: "Samantha D.",
+          date: "2023-08-14",
+          rating: 4,
+          text: "Easier to sort my older Google links.",
+        },
+        {
+          name: "Alex M.",
+          date: "2023-08-15",
+          rating: 4,
+          text: "How to sort my older Google links?",
+        },
+        {
+          name: "Ethan R.",
+          date: "2023-08-16",
+          rating: 3,
+          text: "Interactive UI design",
+        },
+        {
+          name: "Olivia P.",
+          date: "2023-08-17",
+          rating: 4,
+          text: "The system seems to be lagging even though I already paid my WiFi.",
+        },
+        {
+          name: "Liam K.",
+          date: "2023-08-18",
+          rating: 5,
+          text: "Good job Fatin",
+        },
+        {
+          name: "Ava H.",
+          date: "2023-08-19",
+          rating: 4.5,
+          text: "I don't know what to write here. So here's 4 stars for you.",
+        },
+      ];
+
+      // Function to render stars
+      function renderStars(rating) {
+        const fullStar = "&#9733;"; // ★
+        const emptyStar = "&#9734;"; // ☆
+        let stars = "";
+
+        for (let i = 1; i <= 5; i++) {
+          stars += rating >= i ? fullStar : emptyStar;
+        }
+        return stars;
+      }
+
+      // Function to render reviews
+      function renderReviews(reviews) {
+        const container = document.getElementById("reviewsContainer");
+        const totalReviews = document.getElementById("totalReviews");
+
+        // Update total reviews dynamically
+        totalReviews.textContent = `All Reviews (${reviews.length})`;
+
+        container.innerHTML = "";
+        reviews.forEach((review) => {
+          container.innerHTML += `
+                    <div class="col-md-6">
+                        <div class="review-card">
+                            <h6>${
+                              review.name
+                            } <span class="verified-badge">&#10003;</span></h6>
+                            <p class="text-muted small">Posted on ${
+                              review.date
+                            }</p>
+                            <div class="mb-2">${renderStars(
+                              review.rating
+                            )}</div>
+                            <p>"${review.text}"</p>
+                        </div>
+                    </div>
+                `;
+        });
+      }
+
+      // Function to sort reviews
+      function sortReviews(order) {
+        let sortedReviews = [...feedbackData];
+        if (order === "latest") {
+          sortedReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+        } else {
+          sortedReviews.sort((a, b) => new Date(a.date) - new Date(b.date));
+        }
+        renderReviews(sortedReviews);
+      }
+
+      // Initial render
+      renderReviews(feedbackData);
+    </script>
+  </body>
+</html>

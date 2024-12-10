@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTM Personal Google Drive Links</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+        background-color: #f0ecec;
+      }
+      .navbar {
+        background-color: #fff;
+        border-bottom: 2px solid #900c3f;
+      }
+      .navbar-brand img {
+        height: 40px;
+      }
+      .navbar-nav .nav-link {
+        color: #000;
+        font-weight: bold;
+        margin-right: 15px;
+      }
+
+      .navbar-nav .nav-link.active {
+        color: #900c3f;
+        border-bottom: 3px solid #900c3f;
+      }
+        .card-header, .table th {
+            background-color: #f8f8f8; /* Light gray header */
+            font-weight: bold;
+            font-size: 14px; /* Match the font size */
+        }
+        .list-group-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .list-group-item::before {
+            content: attr(data-initial);
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            background-color: #ddd;
+            color: #555;
+            font-weight: bold;
+        }
+        /* Custom styling for the Add Participants button */
+        .custom-add-btn {
+            background-color: #fff; /* White background */
+            border: 2px solid #dc3545; /* Red border */
+            color: #000000; /* Black text */
+            border-radius: 20px; /* Rounded corners */
+            font-weight: bold;
+        }
+        .custom-add-btn:hover {
+            background-color: #f8d7da; /* Light red background on hover */
+        }
+        .btn-delete {
+            color: #900C3F;
+            border: none;
+            background: none;
+        }
+        .pagination .page-link {
+            color: #900C3F; /* Red color */
+        }
+        .card-footer button {
+            background-color: #900C3F;
+            color: #fff;
+            border-radius: 20px;
+            border: none;
+        }
+        .card-footer button:hover {
+            background-color: #70092f;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img
+              alt="UTM Logo"
+              height="40"
+              src="C:\Users\budak\OneDrive\Desktop\AD PROJECT\GDLinks\images\UTM-LOGO-FULL.png"
+              style="width: auto"
+            />
+          </a>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="lecturer-dashboard.html">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="lecturer-sentLink.html">SENT LINKS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="lecturer-feedbackForm.html">FEEDBACK</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="profile.html">UTM LECTURER</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    <!-- Main Container -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header text-center">View Participants</div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" data-initial="RP">Ryan Will</li>
+                        <li class="list-group-item" data-initial="FN">Fatin Najihah</li>
+                        <li class="list-group-item" data-initial="TT">Thia Thaqif</li>
+                        <li class="list-group-item" data-initial="AA">Azry AAA</li>
+                        <li class="list-group-item" data-initial="IF">Irdina Fatini</li>
+                        <li class="list-group-item" data-initial="NF">Naim Fikri</li>
+                    </ul>
+                    <div class="card-footer text-center">
+                        <button class="btn custom-add-btn w-100">Add Participants</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Personal Google Drive Links</h5>
+                        <button class="btn btn-outline-secondary btn-sm" style="border-radius: 20px;">Filters</button>
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table table-bordered mb-0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Category</th>
+                                    <th>Date / Time</th>
+                                    <th>Ref. Name</th>
+                                    <th>Ref. Name Details</th>
+                                    <th>Google Drive Links</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Course Coordination</td>
+                                    <td>04/03/2023 6:20 pm</td>
+                                    <td>DSA</td>
+                                    <td>Data Structure and Algorithm course materials</td>
+                                    <td><a href="https://drive.google.com/" target="_blank">https://drive.google.com/...</a></td>
+                                    <td><button class="btn-delete"><i class="bi bi-trash3"></i></button></td>
+                                </tr>
+                                <!-- Add more rows as needed -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <nav>
+                            <ul class="pagination mb-0">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                        <button class="btn">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+</body>
+</html>

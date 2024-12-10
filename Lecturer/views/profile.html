@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Profile Page</title>
+    <link
+      crossorigin="anonymous"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f0ecec;
+      }
+      .navbar {
+        background-color: #fff;
+        border-bottom: 2px solid #900c3f;
+      }
+      .navbar-brand img {
+        height: 40px;
+      }
+      .navbar-nav .nav-link {
+        color: #000;
+        font-weight: bold;
+        margin-right: 15px;
+      }
+
+      .navbar-nav .nav-link.active {
+        color: #900c3f;
+        border-bottom: 3px solid #900c3f;
+      }
+      .profile-header {
+        background: linear-gradient(to right, #d3d3d3, #b5651d);
+        padding: 20px;
+        border-radius: 10px 10px 0 0;
+        height: 100px;
+      }
+      .profile-info {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .profile-picture-container {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: lightgrey;
+        cursor: pointer;
+        overflow: hidden;
+      }
+      .profile-picture {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+      }
+      .edit-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.6);
+        font-weight: bold;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .profile-picture-container:hover .edit-overlay {
+        opacity: 1;
+      }
+      input[type="file"] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            alt="UTM Logo"
+            height="40"
+            src="C:\Users\budak\OneDrive\Desktop\AD PROJECT\GDLinks\images\UTM-LOGO-FULL.png"
+            style="width: auto"
+          />
+        </a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="lecturer-dashboard.html">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="lecturer-sentLink.html">SENT LINKS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="lecturer-feedbackForm.html">FEEDBACK</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="profile.html">UTM LECTURER</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Main Content-->
+    <div class="container mt-5">
+      <div class="profile-header"></div>
+      <div class="profile-info">
+        <div class="d-flex align-items-center mb-4">
+          <div class="profile-picture-container" id="profilePictureContainer">
+            <img
+              class="profile-picture"
+              id="profilePicture"
+              alt="Profile Picture"
+            />
+            <div class="edit-overlay">Edit</div>
+          </div>
+          <input type="file" id="uploadInput" accept="image/*" />
+          <div class="ms-3">
+            <h5>FATIN NAJIHAH BINTI ZAINUDIN</h5>
+            <p>fatinnajihah@gmail.com</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label class="form-label" for="fullName">Full Name</label>
+              <input
+                class="form-control"
+                id="fullName"
+                readonly
+                type="text"
+                value="FATIN NAJIHAH BINTI ZAINUDIN"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="description">Description</label>
+              <input
+                class="form-control"
+                id="description"
+                readonly
+                type="text"
+                value="Pelajar FSKSM"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="matricNumber">Matric Number</label>
+              <input
+                class="form-control"
+                id="matricNumber"
+                readonly
+                type="text"
+                value="B23CS0036"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label class="form-label" for="sessionId">Session ID</label>
+              <input
+                class="form-control"
+                id="sessionId"
+                readonly
+                type="text"
+                value="242790026649166"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const profilePictureContainer = document.getElementById(
+        "profilePictureContainer"
+      );
+      const profilePicture = document.getElementById("profilePicture");
+      const uploadInput = document.getElementById("uploadInput");
+
+      // Load image from local storage
+      const storedImage = localStorage.getItem("profilePicture");
+      if (storedImage) {
+        profilePicture.src = storedImage;
+        profilePicture.style.display = "block";
+        profilePictureContainer.style.backgroundColor = "transparent";
+      }
+
+      profilePictureContainer.addEventListener("click", () => {
+        uploadInput.click();
+      });
+
+      uploadInput.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const imageData = e.target.result;
+            profilePicture.src = imageData;
+            profilePicture.style.display = "block";
+            profilePictureContainer.style.backgroundColor = "transparent";
+
+            // Save image to local storage
+            localStorage.setItem("profilePicture", imageData);
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    </script>
+  </body>
+</html>

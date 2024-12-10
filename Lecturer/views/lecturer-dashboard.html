@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UTM Portal</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f0ecec;
+      }
+      .navbar {
+        background-color: #fff;
+        border-bottom: 2px solid #900c3f;
+      }
+      .navbar-brand img {
+        height: 40px;
+      }
+      .navbar-nav .nav-link {
+        color: #000;
+        font-weight: bold;
+        margin-right: 15px;
+      }
+
+      .navbar-nav .nav-link.active {
+        color: #900c3f;
+        border-bottom: 3px solid #900c3f;
+      }
+      .group-card {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 15px;
+        text-align: center;
+      }
+      .group-card-link {
+        text-decoration: none;
+        color: inherit; /* Keeps the text color of the card */
+        display: block; /* Makes the entire card clickable */
+      }
+      .group-card-title {
+        font-weight: bold;
+        color: #900c3f;
+        font-size: 18px;
+      }
+      .group-card-subtitle {
+        color: #555;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+      .participant-badge {
+        display: inline-block;
+        background-color: #e0e0e0;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        margin: 2px;
+      }
+      .participant-red {
+        background-color: #f28b82; /* Light Red */
+      }
+      .participant-yellow {
+        background-color: #fbbc04; /* Light Yellow */
+      }
+      .participant-green {
+        background-color: #ccff90; /* Light Green */
+      }
+      .participant-teal {
+        background-color: #a7ffeb; /* Light Teal */
+      }
+      .participant-purple {
+        background-color: #d7aefb; /* Light Purple */
+      }
+      .section-box {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #ffffff;
+        position: relative;
+      }
+      #category-section {
+        margin-right: 30px; /* Add space between the Category Section and Session Section */
+      }
+      #category-container .col-md-4 {
+        margin-bottom: 15px;
+      }
+      .category-card {
+        display: block;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: left;
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        background-color: #f9f9f9;
+      }
+      .category-card:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .btn-add {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        border: none;
+        background-color: transparent;
+      }
+      .btn-add i {
+        font-size: 24px;
+        color: #900c3f;
+      }
+      .dropdown-menu li a {
+        cursor: pointer;
+      }
+      body {
+        background-color: #f0ecec;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            alt="UTM Logo"
+            height="40"
+            src="C:\Users\budak\OneDrive\Desktop\AD PROJECT\GDLinks\images\UTM-LOGO-FULL.png"
+            style="width: auto"
+          />
+        </a>
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="lecturer-dashboard.html">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="lecturer-sentLink.html">SENT LINKS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="lecturer-feedbackForm.html">FEEDBACK</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="profile.html">UTM LECTURER</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container mt-4">
+      <!-- Category and Session in the Same Row -->
+      <div class="row">
+        <!-- Category Section -->
+        <div class="col-md-7 section-box" id="category-section">
+          <h5 class="mb-3">Category</h5>
+          <div class="row" id="category-container">
+            <!-- Category cards will be appended here -->
+          </div>
+          <button class="btn-add" id="add-category-btn">
+            <i class="bi bi-plus-circle"></i>
+          </button>
+        </div>
+
+        <!-- Session Section -->
+        <div class="col-md-4 section-box">
+          <h5 class="mb-3">Session</h5>
+          <select class="form-select mb-2">
+            <option selected>2024/2025 I</option>
+            <option>2024/2025 II</option>
+            <option>2025/2026 I</option>
+          </select>
+          <a href="lecturer-viewAllLink.html" class="btn btn-light w-100">Personal Google Link</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group Shared Link Section -->
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5>Group Shared Link</h5>
+        <button class="btn btn-outline-secondary">Create Group +</button>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <a href="lecturer-groupShareLink.html" class="group-card-link">
+            <div class="group-card">
+              <h5 class="group-card-title">
+                SECR3104-3 APPLICATION DEVELOPMENT
+              </h5>
+              <p class="group-card-subtitle">
+                Course files submission for AD Course Section 03
+              </p>
+              <div>
+                <!-- Participants -->
+                <div class="participant-badge participant-red">EK</div>
+                <div class="participant-badge participant-yellow">JK</div>
+                <div class="participant-badge participant-green">AH</div>
+                <div class="participant-badge participant-teal">RT</div>
+                <div class="participant-badge participant-purple">+5</div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <div class="group-card">
+            <h5 class="group-card-title">SECR3104-4 APPLICATION DEVELOPMENT</h5>
+            <p class="group-card-subtitle">
+              Course files submission for AD Course Section 04
+            </p>
+            <div>
+              <!-- Participants -->
+              <div class="participant-badge participant-red">EK</div>
+              <div class="participant-badge participant-yellow">JK</div>
+              <div class="participant-badge participant-green">AH</div>
+              <div class="participant-badge participant-teal">RT</div>
+              <div class="participant-badge participant-purple">+2</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="group-card">
+            <h5 class="group-card-title">
+              SECR3104-4 SOFTWARE DESIGN ARCHITECTURE
+            </h5>
+            <p class="group-card-subtitle">
+              Course files submission for SDA Course Section 04
+            </p>
+            <div>
+              <!-- Participants -->
+              <div class="participant-badge participant-red">EK</div>
+              <div class="participant-badge participant-yellow">JK</div>
+              <div class="participant-badge participant-green">AH</div>
+              <div class="participant-badge participant-teal">RT</div>
+              <div class="participant-badge participant-purple">+9</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Category Modal -->
+    <div
+      class="modal fade"
+      id="categoryModal"
+      tabindex="-1"
+      aria-labelledby="categoryModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="categoryModalLabel">Add Category</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <ul class="list-group">
+              <li
+                class="list-group-item"
+                data-category="Timetable"
+                data-link="lecturer-timetableLink.html"
+              >
+                Timetable
+              </li>
+              <li
+                class="list-group-item"
+                data-category="Course Coordinator"
+                data-link="lecturer-courseLink.html"
+              >
+                Course Coordinator
+              </li>
+              <li
+                class="list-group-item"
+                data-category="Passyear Paper"
+                data-link="lecturer-pastyearpaperLink.html"
+              >
+                Passyear Paper
+              </li>
+              <li
+                class="list-group-item"
+                data-category="Workshop"
+                data-link="lecturer-workshopLink.html"
+              >
+                Workshop
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const categoryContainer = document.getElementById("category-container");
+        const addCategoryBtn = document.getElementById("add-category-btn");
+
+        // Delete category
+        categoryContainer.addEventListener("click", function (event) {
+          if (event.target.classList.contains("delete-category")) {
+            const categoryCard = event.target.closest(".col-3");
+            categoryCard.remove();
+          }
+        });
+
+        // Show modal to add category
+        addCategoryBtn.addEventListener("click", function () {
+          const modal = new bootstrap.Modal(
+            document.getElementById("categoryModal")
+          );
+          modal.show();
+        });
+
+        // Add category from modal
+        document.querySelectorAll(".list-group-item").forEach(function (item) {
+          item.addEventListener("click", function () {
+            const category = item.getAttribute("data-category");
+            const link = item.getAttribute("data-link");
+
+            // Create new category card
+            const newCard = document.createElement("div");
+            newCard.classList.add("position-relative", "col-3");
+            newCard.setAttribute("data-category", category);
+            newCard.innerHTML = `
+              <a href="${link}" class="category-card">${category}</a>
+              <div class="dropdown position-absolute" style="top: 10px; right: 15px;">
+                <button class="btn btn-light btn-sm dropdown-toggle p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-three-dots-vertical"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item delete-category">Delete</a></li>
+                </ul>
+              </div>
+            `;
+
+            // Add new card to container
+            categoryContainer.appendChild(newCard);
+
+            // Close modal
+            const modal = bootstrap.Modal.getInstance(
+              document.getElementById("categoryModal")
+            );
+            modal.hide();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
