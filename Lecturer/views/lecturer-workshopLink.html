@@ -44,6 +44,15 @@
         display: flex;
         gap: 10px;
       }
+      .btn-add {
+        background-color: #800000;
+        color: #ffffff;
+        border-radius: 20px;
+        padding: 0.5rem 1.5rem;
+      }
+      .btn-add:hover {
+        background-color: #660000;
+      }
       .btn-edit,
       .btn-delete {
         border: none;
@@ -88,13 +97,13 @@
               <a class="nav-link active" href="lecturer-dashboard.html">HOME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="lecturer-sentLink.html">SENT LINKS</a>
+              <a class="nav-link" href="profile.html">PROFILE</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="lecturer-feedbackForm.html">FEEDBACK</a>
+              <a class="nav-link" href="loginPage.html">LOGOUT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="profile.html">UTM LECTURER</a>
+              <a class="nav-link" href="#">| UTM LECTURER</a>
             </li>
           </ul>
         </div>
@@ -139,23 +148,76 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Data will be populated here -->
+            <tr>
+              <td>1</td>
+              <td>Workshop</td>
+              <td>2024-12-15 10:00 AM</td>
+              <td>John Doe</td>
+              <td>Introduction to AI</td>
+              <td>
+                <a href="https://drive.google.com/example-link" target="_blank">
+                  Google Drive Link
+                </a>
+              </td>
+              <td class="btn-action">
+                <button class="btn-edit">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn-delete">
+                  <i class="bi bi-trash3"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Workshop</td>
+              <td>2024-12-16 2:00 PM</td>
+              <td>Jane Smith</td>
+              <td>Data Science Basics</td>
+              <td>
+                <a href="https://drive.google.com/example-course-link" target="_blank">
+                  Google Drive Link
+                </a>
+              </td>
+              <td class="btn-action">
+                <button class="btn-edit">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn-delete">
+                  <i class="bi bi-trash3"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Workshop</td>
+              <td>2024-12-20 11:00 AM</td>
+              <td>Ali Khan</td>
+              <td>Cloud Computing Overview</td>
+              <td>
+                <a href="https://drive.google.com/example-seminar-link" target="_blank">
+                  Google Drive Link
+                </a>
+              </td>
+              <td class="btn-action">
+                <button class="btn-edit">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button class="btn-delete">
+                  <i class="bi bi-trash3"></i>
+                </button>
+              </td>
+            </tr>
           </tbody>
+          
         </table>
         <!-- Footer -->
         <div class="card-footer d-flex justify-content-end align-items-center">
-          <div>
-            <button class="btn btn-outline-secondary me-3">Sent Link +</button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              onclick="openAddModal()"
-            >
-              Add
-            </button>
-          </div>
           <nav>
             <ul class="pagination mb-0">
+              <li>
+               <button class="btn btn-add mt-1" id="addModal">Add</button> 
+              </li>
               <li class="page-item">
                 <a class="page-link" href="#">Previous</a>
               </li>
